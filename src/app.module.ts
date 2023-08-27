@@ -8,9 +8,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './auth/strategy.service';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 
 @Module({
   imports: [
+    DevtoolsModule.register({
+      // http: process.env.NODE_ENV !== 'production',
+    }),
     AuthModule,
     PrismaModule,
     ConfigModule.forRoot({ isGlobal: true }),
